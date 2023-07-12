@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Char entities</title>
+  <style type="text/css">
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Avenir', 'Segoe UI', 'Lucida Grande', 'Helvetica Neue', 'Helvetica', 'Fira Sans', 'Roboto', 'Noto', 'Droid Sans', 'Cantarell', 'Oxygen', 'Ubuntu', 'Franklin Gothic Medium', 'Century Gothic', 'Liberation Sans', sans-serif;
+    }
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    h1, h2 {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .entity {
+      margin: 5px;
+      padding: 20px 15px;
+      min-width: 100px;
+      background-color: #fafafa;
+      text-align: center;
+    }
+    .entity h3 {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+  <script type="text/javascript">
+    let content = document.getElementById('content');
+    let chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','D','F']
+    let codes = []
+    for (let j = 0; j < 16; j++){
+      for (let k = 0; k < 16; k++){
+        for (let l = 0; l < 16; l++){
+          for (let m = 0; m < 16; m++){
+            codes.push(chars[j] + chars[k] + chars[l] + chars[m]);
+          }
+        }
+      }
+    }
+    for (let n = 0; n < 65535; n++){
+      let newDiv = document.createElement('div');
+      let ent = document.createTextNode(String.fromCharCode('0x' + codes[n]) + ' (' + codes[n] + ')');
+      newDiv.appendChild(ent);
+      content.appendChild(newDiv);
+    }
+  </script>
+</body>
+</html>
